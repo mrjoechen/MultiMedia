@@ -11,6 +11,7 @@
         android:id="@+id/btn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="openPictureAct"/>
+        android:onClick="openPictureAct"
+        android:text="显示图片"/>
 
 </RelativeLayout>
