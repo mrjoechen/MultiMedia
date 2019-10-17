@@ -1,15 +1,21 @@
 package com.chenqiao.multimedia;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 import android.widget.ImageView;
+
+import java.io.File;
 
 public class PictureActivity extends AppCompatActivity {
 
@@ -19,11 +25,24 @@ public class PictureActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture);
-        showSurface();
+
 
         mBitmap = BitmapFactory.decodeResource(getResources(), R.raw.iron_man);
+        Matrix matrix = new Matrix();
+        matrix.preScale(0.1f, 0.1f);
+        mBitmap =  Bitmap.createBitmap(mBitmap, 0, 0, mBitmap.getWidth(), mBitmap.getHeight(), matrix, false); // 获取bitmap
+
+        //ImageView 展示图片
         ImageView imageView1 = findViewById(R.id.iv1);
         imageView1.setImageBitmap(mBitmap);
+
+        //SurfaceView展示图片
+        showSurface();
+
+        //自定义view展示图片
+//        CustomView customView = new CustomView(this);
+
+
 
     }
     SurfaceHolder mSurfaceHolder;
@@ -40,11 +59,9 @@ public class PictureActivity extends AppCompatActivity {
                         paint.setAntiAlias(true);
                         paint.setStyle(Paint.Style.STROKE);
 
-                        Matrix matrix = new Matrix();
-                        matrix.preScale(0.1f, 0.1f);
-                        Bitmap bitmap =  Bitmap.createBitmap(mBitmap, 0, 0, mBitmap.getWidth(), mBitmap.getHeight(), matrix, false); // 获取bitmap
+
                         Canvas canvas = mSurfaceHolder.lockCanvas();  // 先锁定当前surfaceView的画布
-                        canvas.drawBitmap(bitmap, 0, 0, paint); //执行绘制操作
+                        canvas.drawBitmap(mBitmap, 0, 0, paint); //执行绘制操作
                         mSurfaceHolder.unlockCanvasAndPost(canvas); // 解除锁定并显示在界面上
                     }
 //                }

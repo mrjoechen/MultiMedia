@@ -2,6 +2,13 @@
 
 buildscript {
     repositories {
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+        maven {
+            url "http://maven.aliyun.com/nexus/content/repositories/releases/"
+        }
+        maven {
+            url "http://maven.aliyun.com/nexus/content/repositories/snapshots"
+        }
         google()
         jcenter()
         
@@ -16,6 +23,14 @@ buildscript {
 
 allprojects {
     repositories {
+
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+        maven {
+            url "http://maven.aliyun.com/nexus/content/repositories/releases/"
+        }
+        maven {
+            url "http://maven.aliyun.com/nexus/content/repositories/snapshots"
+        }
         google()
         jcenter()
         
