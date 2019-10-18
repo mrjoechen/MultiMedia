@@ -14,6 +14,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * 绘制图片方式
+     */
     public void openPictureAct(View v){
         Intent intent = new Intent(MainActivity.this, PictureActivity.class);
         startActivity(intent);
